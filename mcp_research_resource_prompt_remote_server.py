@@ -194,6 +194,6 @@ def generate_search_prompt(topic: str, num_papers: int = 5) -> str:
 
 if __name__ == "__main__":
     # Initialize and run the server
-    import os
-    port = int(os.environ.get("PORT", 8000))  # Use $PORT if provided by Render
-    mcp.run(transport='sse', host="0.0.0.0", port=port)
+    mcp.run(transport='sse')  # Setup step
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(mcp.app, host="0.0.0.0", port=port)  # Start serve
