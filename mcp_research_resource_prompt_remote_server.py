@@ -6,8 +6,10 @@ from mcp.server.fastmcp import FastMCP
 
 PAPER_DIR = "papers"
 
-# Initialize FastMCP server
-mcp = FastMCP("research", port=8001)
+port = int(os.environ.get("PORT", 8000))
+
+# Initialize FastMCP
+mcp = FastMCP("research", port=port)
 
 
 @mcp.tool()
@@ -194,6 +196,5 @@ def generate_search_prompt(topic: str, num_papers: int = 5) -> str:
 
 if __name__ == "__main__":
     # Initialize and run the server
-    mcp.run(transport='sse')  # Setup step
-    port = int(os.environ.get("PORT", 8000))
-    uvicorn.run(mcp.app, host="0.0.0.0", port=port)  # Start serve
+    mcp.run(transport='sse')  # Setup any internal routing or background services
+    uvicorn.run(mcp.app, host="0.0.0.0", port=port)
