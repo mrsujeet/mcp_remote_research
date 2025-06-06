@@ -15,6 +15,7 @@ port = int(os.environ.get("PORT", 8000))
 mcp = FastMCP("research", host="0.0.0.0", port=port)
 
 
+
 @mcp.tool()
 def search_papers(topic: str, max_results: int = 5) -> List[str]:
     """
@@ -207,4 +208,4 @@ if __name__ == "__main__":
     # uvicorn.run(app, host="0.0.0.0", port=port)
     # mcp.run(transport="sse", host="0.0.0.0", port=port)
     # mcp.run(transport="sse")
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=port)
+    mcp.run(transport="streamable-http")
