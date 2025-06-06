@@ -202,5 +202,6 @@ if __name__ == "__main__":
     # uvicorn.run(mcp.app, host="0.0.0.0", port=port)  # MUST use 0.0.0.0
     # uvicorn.run(mcp.app, host="0.0.0.0", port=port)
     # mcp.run(host="0.0.0.0", port=port, transport="sse")
-    app = mcp.get_app()  # ✅ Assuming this method exists
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    # app = mcp.get_app()  # ✅ Assuming this method exists
+    # uvicorn.run(app, host="0.0.0.0", port=port)
+    mcp.run(transport="sse", host="0.0.0.0", port=port)
