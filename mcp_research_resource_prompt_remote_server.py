@@ -11,7 +11,8 @@ PAPER_DIR = "papers"
 port = int(os.environ.get("PORT", 8000))
 
 # ✅ Step 2: Initialize FastMCP without hardcoding host/port
-mcp = FastMCP("research")  # REMOVE `port
+# mcp = FastMCP("research")  # REMOVE `port
+mcp = FastMCP("research", host="0.0.0.0", port=port)
 
 
 @mcp.tool()
@@ -204,4 +205,5 @@ if __name__ == "__main__":
     # mcp.run(host="0.0.0.0", port=port, transport="sse")
     # app = mcp.get_app()  # ✅ Assuming this method exists
     # uvicorn.run(app, host="0.0.0.0", port=port)
-    mcp.run(transport="sse", host="0.0.0.0", port=port)
+    # mcp.run(transport="sse", host="0.0.0.0", port=port)
+    mcp.run(transport="sse")
