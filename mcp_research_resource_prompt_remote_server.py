@@ -200,4 +200,5 @@ if __name__ == "__main__":
     # Initialize and run the server
     # mcp.run(transport="sse")  # optional init logic
     # uvicorn.run(mcp.app, host="0.0.0.0", port=port)  # MUST use 0.0.0.0
-    uvicorn.run(mcp.app, host="0.0.0.0", port=port)
+    # uvicorn.run(mcp.app, host="0.0.0.0", port=port)
+    mcp.run(host="0.0.0.0", port=port, transport="sse")
