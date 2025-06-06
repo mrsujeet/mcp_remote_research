@@ -206,4 +206,5 @@ if __name__ == "__main__":
     # app = mcp.get_app()  # ✅ Assuming this method exists
     # uvicorn.run(app, host="0.0.0.0", port=port)
     # mcp.run(transport="sse", host="0.0.0.0", port=port)
-    mcp.run(transport="sse")
+    # mcp.run(transport="sse")
+    mcp.run(transport="streamable-http", host="0.0.0.0", port=port)
