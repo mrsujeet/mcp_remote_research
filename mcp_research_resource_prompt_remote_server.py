@@ -1,5 +1,6 @@
 import arxiv
 import json
+import uvicorn
 import os
 from typing import List
 from mcp.server.fastmcp import FastMCP
@@ -7,7 +8,7 @@ from mcp.server.fastmcp import FastMCP
 PAPER_DIR = "papers"
 
 # ✅ Step 1: Use Render-provided port
-port = int(os.environ.get("PORT", 10000))
+port = int(os.environ.get("PORT", 8000))
 
 # ✅ Step 2: Initialize FastMCP without hardcoding host/port
 mcp = FastMCP("research")  # REMOVE `port
@@ -197,5 +198,6 @@ def generate_search_prompt(topic: str, num_papers: int = 5) -> str:
 
 if __name__ == "__main__":
     # Initialize and run the server
-    mcp.run(transport="sse")  # optional init logic
-    uvicorn.run(mcp.app, host="0.0.0.0", port=port)  # MUST use 0.0.0.0
+    # mcp.run(transport="sse")  # optional init logic
+    # uvicorn.run(mcp.app, host="0.0.0.0", port=port)  # MUST use 0.0.0.0
+    uvicorn.run(mcp.app, host="0.0.0.0", port=port)
