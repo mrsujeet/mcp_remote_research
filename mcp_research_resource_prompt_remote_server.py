@@ -208,7 +208,21 @@ if __name__ == "__main__":
     # uvicorn.run(app, host="0.0.0.0", port=port)
     # mcp.run(transport="sse", host="0.0.0.0", port=port)
     # mcp.run(transport="sse")
+    print("--- Inspecting Registered Routes ---")
+    try:
+        # Check if the main 'mcp' object has the routes directly
+        if hasattr(mcp, 'routes'):
+            for route in mcp.routes:
+                if hasattr(route, "path"):
+                    methods = ", ".join(getattr(route, "methods", []))
+                    print(f"Path: {route.path} | Methods: [{methods}] | Name: {route.name}")
+            print("--- End of Route Inspection ---")
+        else:
+            print("!!! Could not find 'mcp.routes'. The framework hides its route list.")
+
+    except Exception as e:
+        print(f"!!! An error occurred while inspecting routes: {e}")
+
+    # Run the server
     mcp.run(transport="streamable-http")
-    print("=== ROUTES REGISTERED ===")
-    for route in mcp.app.routes:
-        print(f"{route.path} -> {route.endpoint}")
+
