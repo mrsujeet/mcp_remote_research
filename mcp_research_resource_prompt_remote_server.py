@@ -209,3 +209,6 @@ if __name__ == "__main__":
     # mcp.run(transport="sse", host="0.0.0.0", port=port)
     # mcp.run(transport="sse")
     mcp.run(transport="streamable-http")
+    print("=== ROUTES REGISTERED ===")
+    for route in mcp.app.routes:
+        print(f"{route.path} -> {route.endpoint}")
