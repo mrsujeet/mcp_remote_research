@@ -200,7 +200,7 @@ def generate_search_prompt(topic: str, num_papers: int = 5) -> str:
 
 if __name__ == "__main__":
     # Initialize and run the server
-    # mcp.run(transport="sse")  # optional init logic
+    mcp.run(transport="sse")  # optional init logic
     # uvicorn.run(mcp.app, host="0.0.0.0", port=port)  # MUST use 0.0.0.0
     # uvicorn.run(mcp.app, host="0.0.0.0", port=port)
     # mcp.run(host="0.0.0.0", port=port, transport="sse")
@@ -224,5 +224,5 @@ if __name__ == "__main__":
         print(f"!!! An error occurred while inspecting routes: {e}")
 
     # Run the server
-    mcp.run(transport="streamable-http")
+    # mcp.run(transport="streamable-http")
 
